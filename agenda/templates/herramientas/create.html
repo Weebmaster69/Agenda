@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Nuevo Contacto{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="name">Nombre</label>
+        <input name="name" id="name" required />
+        <label for="number">Numero</label>
+        <input name="number" id="number" required />
+        <label for="job">Trabajo</label>
+        <input name="job" id="job"/>
+        <input type="submit" value="Guardar"/>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>{% block title %}Editar {{ contact['name'] }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="name">Nombre</label>
+        <input name="name" id="name" value="{{ request.form['name'] or contact ['name'] }}" required/>
+        <label for="name">Numero</label>
+        <input name="number" id="number" value="{{ request.form['number'] or contact ['number'] }}" required/>
+        <label for="name">Trabajo</label>
+        <input name="job" id="job" value="{{ request.form['job'] or contact ['job'] }}" />
+        <input type="submit" value="Guardar" />
+    </form>
+    <form action="{{ url_for('contact.delete', id=contact['id']) }}" method="post">
+        <input class="danger" type="submit" value="Eliminar" onclick="return confirm('Estas seguro que quieres eliminarlo')">
+    </form>
+{% endblock %}

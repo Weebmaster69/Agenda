@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Contactos{% endblock %}</h1>
+    {%if g.user %}
+        <a class="action" href="{{ url_for('contact.create') }}">Nuevo Contacto</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<ul>
+    {% for contact in contacts %}
+    <li class="todo">
+        <div>
+            <h1>{{ contact['name'] }}</h1>
+            <p>{{contact['number']}}</p>
+            <p>{{contact['job']}}</p>
+            <a class="action" href="{{ url_for('contact.update', id=contact['id']) }}">Editar</a>
+        </div>
+    </li>
+    {% if not loop.last %}
+        <hr>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endblock %}
